@@ -1,19 +1,51 @@
 package workshop04;
 
-public class TestBook {
-
-	public static void main(String[] args) {
-		Book b1 = new Book("SQL Plus",50000,5);
-		Book b2 = new Book("Java 2.0",40000,3);
-		Book b3 = new Book("JSP Servlet",60000,6);
+public class Book {
+	String bookName;
+	int bookPrice;
+	double bookDiscountRate;
 	
-		System.out.println("책이름"+"\t\t"+"가격"+"\t"+"할인율"+"\t"+"할인후금액");
-		System.out.println("----------------------------------------");
-		System.out.println(b1.toString());
-		System.out.println(b2.toString());
-		System.out.println(b3.toString());
+	public Book() {}
+	
+	public Book(String bookName, int bookPrice, double bookDiscountRate) {
+		this.bookName = bookName;
+		this.bookPrice = bookPrice;
+		this.bookDiscountRate = bookDiscountRate;
+	}
+
+	public String getBookName() {
+		return bookName;
+	}
+
+	public void setBookName(String bookName) {
+		this.bookName = bookName;
+	}
+
+	public int getBookPrice() {
+		return bookPrice;
+	}
+
+	public void setBookPrice(int bookPrice) {
+		this.bookPrice = bookPrice;
+	}
+
+	public double getBookDiscountRate() {
+		return bookDiscountRate;
+	}
+
+	public void setBookDiscountRate(double bookDiscountRate) {
+		this.bookDiscountRate = bookDiscountRate;
+	}
+	
+	public double getDiscountBookPrice(int price, double rate) {
+		return price - (price * (double)(rate/100));
+	}
+
+	@Override
+	public String toString() {
+		return bookName +"\t" +  bookPrice + "원\t" + bookDiscountRate + "%\t" + getDiscountBookPrice(this.bookPrice,this.bookDiscountRate)+"원";
 	}
 	
 	
-
+	
 }
